@@ -242,7 +242,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="csu-kp-5Q6"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" id="Ce4-aC-Urf"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="search" id="Ce4-aC-Urf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rzk-nv-VZS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -258,7 +258,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ACg-a1-d1D"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Camera" id="VlI-6T-QOw"/>
+                    <tabBarItem key="tabBarItem" title="Camera" image="camera-2" id="VlI-6T-QOw"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c9f-8d-b7l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -274,11 +274,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="kSI-J8-EjR"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Activity" id="tqw-OO-UWZ"/>
+                    <tabBarItem key="tabBarItem" title="Activity" image="heart" id="tqw-OO-UWZ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lvm-07-cxo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2281" y="1655"/>
+            <point key="canvasLocation" x="2281" y="1675"/>
         </scene>
         <!--Profile-->
         <scene sceneID="IMp-yl-7EZ">
@@ -290,11 +290,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="j2R-ts-FUa"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" id="Kw5-kb-IRS"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="user" id="Kw5-kb-IRS"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z4g-2K-Bk6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2281" y="2459"/>
+            <point key="canvasLocation" x="2281" y="2490"/>
         </scene>
         <!--Home-->
         <scene sceneID="Ikx-BB-2oj">
@@ -306,11 +306,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="aL6-xU-vZr"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="oAE-YP-Qgd"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" id="oAE-YP-Qgd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EKA-xp-rna" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2262" y="-531"/>
+            <point key="canvasLocation" x="2281" y="-537"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="pTb-Xz-12d">
@@ -335,7 +335,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="camera-2" width="23" height="23"/>
         <image name="cohancelogo-480-1" width="480" height="94"/>
+        <image name="heart" width="23" height="23"/>
+        <image name="home" width="23" height="23"/>
+        <image name="search" width="23" height="23"/>
+        <image name="user" width="23" height="23"/>
         <image name="user-empty-160px-1" width="160" height="160"/>
     </resources>
     <inferredMetricsTieBreakers>
