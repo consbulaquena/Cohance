@@ -59,6 +59,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00BA0F9A20233B420034635C /* Viewcontroller */ = {
+			isa = PBXGroup;
+			children = (
+				00C77DBE201B34DD00B3E47B /* SignInViewController.swift */,
+				00BA0F80201DC1520034635C /* SignUpViewController.swift */,
+				00BA0F822021991C0034635C /* HomeViewController.swift */,
+				00BA0F842021992F0034635C /* SearchViewController.swift */,
+				00BA0F86202199460034635C /* CameraViewController.swift */,
+				00BA0F88202199510034635C /* ActivityViewController.swift */,
+				00BA0F8A2021995B0034635C /* ProfileViewController.swift */,
+			);
+			path = Viewcontroller;
+			sourceTree = "<group>";
+		};
+		00BA0F9B20233B690034635C /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				00C77DBC201B321100B3E47B /* Start.storyboard */,
+				00BA0F8E2022B3EB0034635C /* Main.storyboard */,
+				00BA0F982022B93D0034635C /* Profile.storyboard */,
+				00BA0F962022B9030034635C /* Activity.storyboard */,
+				00BA0F942022B8C70034635C /* Camera.storyboard */,
+				00BA0F922022B8590034635C /* Search.storyboard */,
+				00BA0F902022B8050034635C /* Home.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		00C77D9E201AFAFB00B3E47B = {
 			isa = PBXGroup;
 			children = (
@@ -79,22 +107,10 @@
 			isa = PBXGroup;
 			children = (
 				00C77DAA201AFAFB00B3E47B /* AppDelegate.swift */,
-				00C77DBC201B321100B3E47B /* Start.storyboard */,
-				00BA0F8E2022B3EB0034635C /* Main.storyboard */,
-				00BA0F982022B93D0034635C /* Profile.storyboard */,
-				00BA0F962022B9030034635C /* Activity.storyboard */,
-				00BA0F942022B8C70034635C /* Camera.storyboard */,
-				00BA0F922022B8590034635C /* Search.storyboard */,
-				00BA0F902022B8050034635C /* Home.storyboard */,
-				00C77DBE201B34DD00B3E47B /* SignInViewController.swift */,
-				00BA0F80201DC1520034635C /* SignUpViewController.swift */,
-				00BA0F822021991C0034635C /* HomeViewController.swift */,
-				00BA0F842021992F0034635C /* SearchViewController.swift */,
-				00BA0F86202199460034635C /* CameraViewController.swift */,
-				00BA0F88202199510034635C /* ActivityViewController.swift */,
-				00BA0F8A2021995B0034635C /* ProfileViewController.swift */,
-				00C77DB3201AFAFB00B3E47B /* LaunchScreen.storyboard */,
+				00BA0F9B20233B690034635C /* Storyboard */,
+				00BA0F9A20233B420034635C /* Viewcontroller */,
 				00BA0F8C2021B4EC0034635C /* Assets.xcassets */,
+				00C77DB3201AFAFB00B3E47B /* LaunchScreen.storyboard */,
 				00C77DB6201AFAFB00B3E47B /* Info.plist */,
 			);
 			path = Cohance;
