@@ -8,10 +8,12 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class SignUpViewController: UIViewController {
     @IBOutlet var profileImage: UIImageView!
     
+    @IBOutlet var usernameTextField: UITextField!
     
     @IBOutlet var passwordTextfield: UITextField!
     @IBOutlet var emailTextField: UITextField!
@@ -33,11 +35,18 @@ class SignUpViewController: UIViewController {
         FIRAuth.auth()?.createUser(withEmail: emailTextField.text!, password: passwordTextfield.text!, completion: { (user: FIRUser?, error: Error?) in
             if error != nil{
     //localized desc. can tell us what's wrong
-                print(error?.localizedDescription)
+                print(error!.localizedDescription)
             return
-                
             }
-            print(user)
+            let ref = FIRDatabase.database().reference()
+            let usersReference = ref.child("users")
+        //print(usersReference.description())
+            let uid = user?.uid
+            let newUserReference = usersReference.child(uid!)
+            newUserReference.setValue(["username": self.usernameTextField.text!, "email": self.emailTextField.text! ])
+            print("description: (newUserReference.description()")
+            
+            
         })
     }
 }
