@@ -43,8 +43,8 @@ class SignUpViewController: UIViewController {
         //print(usersReference.description())
             let uid = user?.uid
             let newUserReference = usersReference.child(uid!)
-            newUserReference.setValue(["username": self.usernameTextField.text!, "email": self.emailTextField.text! ])
-            print("description: (newUserReference.description()")
+            newUserReference.setValue(["username": self.usernameTextField.text!, "email": self.emailTextField.text!])
+            print("description: \(newUserReference.description())")
             
             
         })
