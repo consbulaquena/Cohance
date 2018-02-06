@@ -25,8 +25,16 @@ class SignUpViewController: UIViewController {
         
     profileImage.layer.cornerRadius = 50
     profileImage.clipsToBounds = true
+    
+    // tap UI photo
+       UITapGestureRecognizer(targetViewController(forAction: Selector(SignUpViewController.handleSelectProfileImageView), sender: self))
+    profileImage.addGestureRecognizer((UIGestureRecognizer))
         
         // Do any additional setup after loading the view.
+    }
+    
+    func handleSelectProfileImageView() {
+        
     }
     
     @IBAction func SignUpButton_TouchUpInside(_ sender: Any) {
@@ -36,8 +44,12 @@ class SignUpViewController: UIViewController {
             if error != nil{
     //localized desc. can tell us what's wrong
                 print(error!.localizedDescription)
-            return
+                return
             }
+            
+            
+        //store photo in firebase
+            
             let ref = FIRDatabase.database().reference()
             let usersReference = ref.child("users")
         //print(usersReference.description())
@@ -48,5 +60,11 @@ class SignUpViewController: UIViewController {
             
             
         })
+    }
+}
+
+extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        <#code#>
     }
 }
