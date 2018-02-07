@@ -27,14 +27,19 @@ class SignUpViewController: UIViewController {
     profileImage.clipsToBounds = true
     
     // tap UI photo
-       UITapGestureRecognizer(targetViewController(forAction: Selector(SignUpViewController.handleSelectProfileImageView), sender: self))
-    profileImage.addGestureRecognizer((UIGestureRecognizer))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SignUpViewController.handleSelectProfileImageView))
+       
+        profileImage.addGestureRecognizer(tapGesture)
+        profileImage.isUserInteractionEnabled = true
+        
         
         // Do any additional setup after loading the view.
     }
     
-    func handleSelectProfileImageView() {
-        
+    @objc func handleSelectProfileImageView() {
+       let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        present(pickerController, animated: true, completion: nil)
     }
     
     @IBAction func SignUpButton_TouchUpInside(_ sender: Any) {
@@ -65,6 +70,12 @@ class SignUpViewController: UIViewController {
 
 extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        <#code#>
+    print("did Finish picking media")
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        profileImage.image = image
+    }
+        print(info)
+    //    profileImage.image = infoPhoto
+    dismiss(animated: true, completion: nil)
     }
 }
