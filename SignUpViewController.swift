@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
 
 class SignUpViewController: UIViewController {
     @IBOutlet var profileImage: UIImageView!
@@ -17,6 +18,16 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet var passwordTextfield: UITextField!
     @IBOutlet var emailTextField: UITextField!
+    
+    //instance variable to store selective
+    
+    var selectedImage: UIImage?
+    
+    
+    
+    
+    
+    
     
     
     override func viewDidLoad() {
@@ -53,12 +64,33 @@ class SignUpViewController: UIViewController {
             }
             
             
+            
+            
+            //Store image to firebase to use firebase realtime feature
+            //reference points to where the storage of image lives
+            //store profile photos in this node
+            let uid = user?.uid
+            
+            let storageRef = FIRStorage.storage().reference(forURL: "gs://cohance-ca490.appspot.com").child("profile_image").child((user?.uid)!)
+            
+            if let profileImage = selectedImage , let imageData = UIImageJPEGRepresentation(profileImage, 0.1)
+        
+            storageRef.put(uploadData, metadata: nil) { (metadata, error) in
+                if error != nil {
+                    print("error")
+                    completion(nil)
+                } else {
+                    completion((metadata?.downloadURL()?.absoluteString)!))
+                    // your uploaded photo url.
+                }
+            }
+            
         //store photo in firebase
             
             let ref = FIRDatabase.database().reference()
             let usersReference = ref.child("users")
         //print(usersReference.description())
-            let uid = user?.uid
+         
             let newUserReference = usersReference.child(uid!)
             newUserReference.setValue(["username": self.usernameTextField.text!, "email": self.emailTextField.text!])
             print("description: \(newUserReference.description())")
@@ -72,6 +104,7 @@ extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationCon
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
     print("did Finish picking media")
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        selectedImage = image
         profileImage.image = image
     }
         print(info)
