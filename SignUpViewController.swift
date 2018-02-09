@@ -73,21 +73,25 @@ class SignUpViewController: UIViewController {
             
             let storageRef = FIRStorage.storage().reference(forURL: "gs://cohance-ca490.appspot.com").child("profile_image").child((user?.uid)!)
             
-            if let profileImg = self.selectedImage, let imageData = UIImageJPEGRepresentation(profileImage, 0.1) {
+            if let profileImg = self.selectedImage, let imageData = UIImageJPEGRepresentation(profileImg, 0.1) {
         
                 storageRef.put(imageData, metadata: nil, completion: { (metadata, error) in
-                    <#code#>
+                    if error != nil {
+                      return
+                    }
+                    let profileImageUrl = metadata?.downloadURL()?.absoluteString
+
+                    let ref = FIRDatabase.database().reference()
+                    let usersReference = ref.child("users")
+                    //print(usersReference.description())
+                    
+                    let newUserReference = usersReference.child(uid!)
+                    newUserReference.setValue(["username": self.usernameTextField.text!, "email": self.emailTextField.text!, "profileImageUrl": profileImageUrl ])
                 })
             }
         //store photo in firebase
             
-            let ref = FIRDatabase.database().reference()
-            let usersReference = ref.child("users")
-        //print(usersReference.description())
-         
-            let newUserReference = usersReference.child(uid!)
-            newUserReference.setValue(["username": self.usernameTextField.text!, "email": self.emailTextField.text!])
-            print("description: \(newUserReference.description())")
+
             
             
         })
