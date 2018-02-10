@@ -18,6 +18,7 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet var passwordTextfield: UITextField!
     @IBOutlet var emailTextField: UITextField!
+    @IBOutlet var signUpButton: UIButton!
     
     //instance variable to store selective
     
@@ -43,8 +44,26 @@ class SignUpViewController: UIViewController {
         profileImage.addGestureRecognizer(tapGesture)
         profileImage.isUserInteractionEnabled = true
         
+        //validating step, method of sign up VC
         
-        // Do any additional setup after loading the view.
+        
+        handleTextField()
+    }
+    func handleTextField() {
+            usernameTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
+            emailTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
+            passwordTextfield.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
+        }
+        
+    @objc func textFieldDidChange() {
+        guard let username = usernameTextField.text, !username.isEmpty, let email = emailTextField.text, !email.isEmpty,
+            let password = passwordTextfield.text, !password.isEmpty else {
+             signUpButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
+            return
+        }
+        
+        
+        signUpButton.setTitleColor(UIColor.white, for: UIControlState.normal)
     }
     
     @objc func handleSelectProfileImageView() {
