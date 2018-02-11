@@ -54,16 +54,21 @@ class SignUpViewController: UIViewController {
             emailTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
             passwordTextfield.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
         }
-        
+    
+    
+    //Turns light color when textfield is complete
     @objc func textFieldDidChange() {
         guard let username = usernameTextField.text, !username.isEmpty, let email = emailTextField.text, !email.isEmpty,
             let password = passwordTextfield.text, !password.isEmpty else {
-             signUpButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
+            signUpButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
+            signUpButton.isEnabled = false
             return
+                
         }
         
         
         signUpButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        signUpButton.isEnabled = true
     }
     
     @objc func handleSelectProfileImageView() {
