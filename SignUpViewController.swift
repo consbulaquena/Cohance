@@ -56,6 +56,8 @@ class SignUpViewController: UIViewController {
         }
     
     
+    
+    
     //Turns light color when textfield is complete
     @objc func textFieldDidChange() {
         guard let username = usernameTextField.text, !username.isEmpty, let email = emailTextField.text, !email.isEmpty,
@@ -87,9 +89,6 @@ class SignUpViewController: UIViewController {
                 return
             }
             
-            
-            
-            
             //Store image to firebase to use firebase realtime feature
             //reference points to where the storage of image lives
             //store profile photos in this node
@@ -103,22 +102,27 @@ class SignUpViewController: UIViewController {
                     if error != nil {
                       return
                     }
-                    let profileImageUrl = metadata?.downloadURL()?.absoluteString
-
-                    let ref = FIRDatabase.database().reference()
-                    let usersReference = ref.child("users")
-                    //print(usersReference.description())
                     
-                    let newUserReference = usersReference.child(uid!)
-                    newUserReference.setValue(["username": self.usernameTextField.text!, "email": self.emailTextField.text!, "profileImageUrl": profileImageUrl ])
+                let profileImageUrl = metadata?.downloadURL()?.absoluteString
+                    
+                self.setUserInformation(profileImageUrl: profileImageUrl!, username: self.usernameTextField.text!, email: self.emailTextField.text!, uid: uid!)
+                    
                 })
             }
         //store photo in firebase
-            
-
-            
-            
         })
+    }
+    
+    //clean code
+    func setUserInformation(profileImageUrl: String, username: String, email: String, uid: String) {
+
+        
+        let ref = FIRDatabase.database().reference()
+        let usersReference = ref.child("users")
+        //print(usersReference.description())
+        
+        let newUserReference = usersReference.child(uid)
+        newUserReference.setValue(["username": self.usernameTextField.text!, "email": self.emailTextField.text!, "profileImageUrl": profileImageUrl])
     }
 }
 
