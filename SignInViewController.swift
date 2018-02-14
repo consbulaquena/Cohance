@@ -20,12 +20,12 @@ class SignInViewController: UIViewController {
     //handletextfield method
     func handleTextField() {
         emailTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
-        passwordTextfield.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
+    passwordTextfield.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
     }
     
     
     @objc func textFieldDidChange() {
-        guard let username = usernameTextField.text, !username.isEmpty, let email = emailTextField.text, !email.isEmpty,
+        guard let email = emailTextField.text, !email.isEmpty,
             let password = passwordTextfield.text, !password.isEmpty else {
                 signUpButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
                 signUpButton.isEnabled = false
