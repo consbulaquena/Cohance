@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignInViewController: UIViewController {
     
@@ -15,6 +16,16 @@ class SignInViewController: UIViewController {
     @IBOutlet var passwordTextfield: UITextField!
     @IBOutlet var signInButton: UIButton!
     
+    
+    @IBAction func signInButton_TouchUpInside(_ sender: Any) {
+        FIRAuth.auth()?.signIn(withEmail: emailTextField.text!, password: passwordTextfield.text!, completion: { (user, error) in
+            if error != nil {
+            print(error!.localizedDescription)
+            return
+            }
+            
+        })
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,8 +35,8 @@ class SignInViewController: UIViewController {
     }
     //handletextfield method
     func handleTextField() {
-        emailTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
-    passwordTextfield.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
+        emailTextField.addTarget(self, action: #selector(SignInViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
+    passwordTextfield.addTarget(self, action: #selector(SignInViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
     }
     
     
@@ -38,14 +49,17 @@ class SignInViewController: UIViewController {
                 
         }
         
-
-        func didReceiveMemoryWarning() {
+        signInButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        signInButton.isEnabled = true
+        }
+        
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
   
 //keyboard hides when touches begun
-        func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
 
@@ -59,5 +73,4 @@ class SignInViewController: UIViewController {
     }
     */
 
-    }
 }
