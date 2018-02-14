@@ -44,6 +44,8 @@ class SignUpViewController: UIViewController {
         profileImage.addGestureRecognizer(tapGesture)
         profileImage.isUserInteractionEnabled = true
         
+        
+        
         //validating step, method of sign up VC
         
         
@@ -92,7 +94,7 @@ class SignUpViewController: UIViewController {
             //Store image to firebase to use firebase realtime feature
             //reference points to where the storage of image lives
             //store profile photos in this node
-            let uid = user?.uid
+        let uid = user?.uid
             
             let storageRef = FIRStorage.storage().reference(forURL: "gs://cohance-ca490.appspot.com").child("profile_image").child((user?.uid)!)
             
@@ -123,8 +125,10 @@ class SignUpViewController: UIViewController {
         
         let newUserReference = usersReference.child(uid)
         newUserReference.setValue(["username": self.usernameTextField.text!, "email": self.emailTextField.text!, "profileImageUrl": profileImageUrl])
+        self.performSegue(withIdentifier: "SignUpToTabBarVC", sender: nil)
     }
 }
+
 
 extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -133,7 +137,7 @@ extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationCon
         selectedImage = image
         profileImage.image = image
     }
-        print(info)
+    print(info)
     //    profileImage.image = infoPhoto
     dismiss(animated: true, completion: nil)
     }
