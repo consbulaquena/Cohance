@@ -9,7 +9,12 @@
 import UIKit
 
 class SignInViewController: UIViewController {
-
+    
+    @IBOutlet var emailTextField: UITextField!
+    
+    @IBOutlet var passwordTextfield: UITextField!
+    @IBOutlet var signInButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,20 +32,20 @@ class SignInViewController: UIViewController {
     @objc func textFieldDidChange() {
         guard let email = emailTextField.text, !email.isEmpty,
             let password = passwordTextfield.text, !password.isEmpty else {
-                signUpButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
-                signUpButton.isEnabled = false
+                signInButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
+                signInButton.isEnabled = false
                 return
                 
         }
         
 
-    override func didReceiveMemoryWarning() {
+        func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
   
 //keyboard hides when touches begun
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
 
@@ -54,4 +59,5 @@ class SignInViewController: UIViewController {
     }
     */
 
+    }
 }
