@@ -18,20 +18,34 @@ class SignInViewController: UIViewController {
     
     
     @IBAction func signInButton_TouchUpInside(_ sender: Any) {
-        FIRAuth.auth()?.signIn(withEmail: emailTextField.text!, password: passwordTextfield.text!, completion: { (user, error) in
-            if error != nil {
-            print(error!.localizedDescription)
-            return
-            }
-            
-        })
+        //called the shared signin instance
+        AuthService.signIn(email: emailTextField.text!, password: passwordTextfield.text!)
+        
+        //ask VC to perform a segue to switch tab bar contorller -perform seg.
+        self.performSegue(withIdentifier: "SignInToTabBarVC", sender: nil)
+    
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
    
+        //diasble button when view is launched
+        signInButton.isEnabled = false
+        
     handleTextField()
+        //do not reauntiticate user
+
+        func viewDidAppear(_ animated: Bool) {
+            super .viewDidAppear(animated)
+            
+        if FIRAuth.auth()?.currentUser != nil{
+                   self.performSegue(withIdentifier: "SignInToTabBarVC", sender: nil)
+            }
+         
+        }
     }
     //handletextfield method
     func handleTextField() {
@@ -43,7 +57,7 @@ class SignInViewController: UIViewController {
     @objc func textFieldDidChange() {
         guard let email = emailTextField.text, !email.isEmpty,
             let password = passwordTextfield.text, !password.isEmpty else {
-                signInButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
+        signInButton.setTitleColor(UIColor.lightText, for: UIControlState.normal)
                 signInButton.isEnabled = false
                 return
                 

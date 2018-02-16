@@ -7,13 +7,22 @@
 //
 
 import Foundation
+import FirebaseAuth
 class AuthService {
-    FIRAuth.auth()?.signIn(withEmail: emailTextField.text!, password: passwordTextfield.text!, completion: { (user, error) in
+    
+    //we can call it directly without needing instance
+    
+    static func signIn(email: String, password: String) {
+        
+        
+    FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
     if error != nil {
     print(error!.localizedDescription)
     return
     }
-    //ask VC to perform a segue to switch tab bar contorller -perform seg.
-    self.performSegue(withIdentifier: "SignInToTabBarVC", sender: nil)
+        //let sign in method know about auth process - using callbacks
+        
     })
+}
+
 }
