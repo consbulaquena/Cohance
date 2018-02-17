@@ -19,12 +19,16 @@ class SignInViewController: UIViewController {
     
     @IBAction func signInButton_TouchUpInside(_ sender: Any) {
         //called the shared signin instance
-        AuthService.signIn(email: emailTextField.text!, password: passwordTextfield.text!)
-        
+        AuthService.signIn(email: emailTextField.text!, password: passwordTextfield.text!, onSuccess: { self.performSegue(withIdentifier: "SignInToTabBarVC", sender: nil)
+
         //ask VC to perform a segue to switch tab bar contorller -perform seg.
-        self.performSegue(withIdentifier: "SignInToTabBarVC", sender: nil)
+        
     
-    }
+    }, onError: { error in
+        print(error!)
+    })
+    
+}
     
     
     override func viewDidLoad() {
