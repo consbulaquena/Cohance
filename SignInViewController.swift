@@ -23,7 +23,7 @@ class SignInViewController: UIViewController {
 
         //ask VC to perform a segue to switch tab bar contorller -perform seg.
         
-    
+        // error message upon wrong email signIn entries
     }, onError: { error in
         print(error!)
     })

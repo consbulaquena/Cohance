@@ -24,13 +24,6 @@ class SignUpViewController: UIViewController {
     
     var selectedImage: UIImage?
     
-    
-    
-    
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,10 +37,9 @@ class SignUpViewController: UIViewController {
         profileImage.addGestureRecognizer(tapGesture)
         profileImage.isUserInteractionEnabled = true
         
-        
-        
+        //diasble button when view is launched
+        signUpButton.isEnabled = false
         //validating step, method of sign up VC
-        
         
         handleTextField()
     }
@@ -82,52 +74,16 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func SignUpButton_TouchUpInside(_ sender: Any) {
-    //create user when Firebase button is hit
-        
-        FIRAuth.auth()?.createUser(withEmail: emailTextField.text!, password: passwordTextfield.text!, completion: { (user: FIRUser?, error: Error?) in
-            if error != nil{
-    //localized desc. can tell us what's wrong
-                print(error!.localizedDescription)
-                return
-            }
-            
-            //Store image to firebase to use firebase realtime feature
-            //reference points to where the storage of image lives
-            //store profile photos in this node
-        let uid = user?.uid
-            
-            let storageRef = FIRStorage.storage().reference(forURL: "gs://cohance-ca490.appspot.com").child("profile_image").child((user?.uid)!)
-            
+
             if let profileImg = self.selectedImage, let imageData = UIImageJPEGRepresentation(profileImg, 0.1) {
-        
-                storageRef.put(imageData, metadata: nil, completion: { (metadata, error) in
-                    if error != nil {
-                      return
-                    }
-                    
-                let profileImageUrl = metadata?.downloadURL()?.absoluteString
-                    
-                self.setUserInformation(profileImageUrl: profileImageUrl!, username: self.usernameTextField.text!, email: self.emailTextField.text!, uid: uid!)
-                    
-                })
-            }
-        //store photo in firebase
-        })
+
+                AuthService.signUp(username: usernameTextField.text!, email: emailTextField.text!, password: passwordTextfield.text!, onSuccess: {
+                
+                }
     }
     
     //clean code
-    func setUserInformation(profileImageUrl: String, username: String, email: String, uid: String) {
 
-        
-        let ref = FIRDatabase.database().reference()
-        let usersReference = ref.child("users")
-        //print(usersReference.description())
-        
-        let newUserReference = usersReference.child(uid)
-        newUserReference.setValue(["username": self.usernameTextField.text!, "email": self.emailTextField.text!, "profileImageUrl": profileImageUrl])
-        self.performSegue(withIdentifier: "SignUpToTabBarVC", sender: nil)
-    }
-}
 
 
 extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
