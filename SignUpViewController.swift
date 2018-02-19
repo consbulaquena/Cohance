@@ -77,8 +77,9 @@ class SignUpViewController: UIViewController {
 
             if let profileImg = self.selectedImage, let imageData = UIImageJPEGRepresentation(profileImg, 0.1) {
 
-                AuthService.signUp(username: usernameTextField.text!, email: emailTextField.text!, password: passwordTextfield.text!, onSuccess: {
-                
+                //switch view
+                self.performSegue(withIdentifier: "SignUpToTabBarVC", sender: nil)
+               AuthService.signUp(username: <#T##String#>, email: <#T##String#>, password: <#T##String#>, imageData: <#T##Data#>, onSuccess: <#T##() -> Void#>, onError: <#T##(String?) -> Void#>)
                 }
     }
     
