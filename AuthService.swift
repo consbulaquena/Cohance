@@ -67,15 +67,9 @@ static func setUserInformation(profileImageUrl: String, username: String, email:
     let ref = FIRDatabase.database().reference()
     let usersReference = ref.child("users")
     //print(usersReference.description())
-    
     let newUserReference = usersReference.child(uid)
-    newUserReference.setValue(["username": self.usernameTextField.text!, "email": self.emailTextField.text!, "profileImageUrl": profileImageUrl])
+    newUserReference.setValue(["username": username, "email": email, "profileImageUrl": profileImageUrl])
     
-    //switch view
-    self.performSegue(withIdentifier: "SignUpToTabBarVC", sender: nil)
-}
 
-
-
-}
+    }
 }
