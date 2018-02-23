@@ -33,8 +33,8 @@ static func signUp(username: String, email: String, password: String, imageData:
     
 FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user: FIRUser?, error: Error?) in
     if error != nil{
-        //localized desc. can tell us what's wrong
-        print(error!.localizedDescription)
+        //localized desc. can tell us what's wrong, replaced error cmd
+        onError(error!.localizedDescription)
         return
     }
     
@@ -54,14 +54,14 @@ FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (
             
             let profileImageUrl = metadata?.downloadURL()?.absoluteString
             
-            self.setUserInformation(profileImageUrl: profileImageUrl!, username: username, email: email, uid: uid!)
+            self.setUserInformation(profileImageUrl: profileImageUrl!, username: username, email: email, uid: uid!, onSuccess: onSuccess)
            })
         })
     //store photo in firebase
 
     }
 
-static func setUserInformation(profileImageUrl: String, username: String, email: String, uid: String) {
+static func setUserInformation(profileImageUrl: String, username: String, email: String, uid: String, onSuccess: @escaping () -> Void) {
     
     
     let ref = FIRDatabase.database().reference()
@@ -69,7 +69,7 @@ static func setUserInformation(profileImageUrl: String, username: String, email:
     //print(usersReference.description())
     let newUserReference = usersReference.child(uid)
     newUserReference.setValue(["username": username, "email": email, "profileImageUrl": profileImageUrl])
-    
+    onSuccess()
 
     }
 }
