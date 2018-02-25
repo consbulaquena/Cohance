@@ -77,18 +77,24 @@ class SignUpViewController: UIViewController {
 
             if let profileImg = self.selectedImage, let imageData = UIImageJPEGRepresentation(profileImg, 0.1) {
 
-                //switch view
-                self.performSegue(withIdentifier: "SignUpToTabBarVC", sender: nil)
-               AuthService.signUp(username: <#T##String#>, email: <#T##String#>, password: <#T##String#>, imageData: <#T##Data#>, onSuccess: <#T##() -> Void#>, onError: <#T##(String?) -> Void#>)
-                }
+             
+                AuthService.signUp(username: usernameTextField.text!, email: emailTextField.text!, password: passwordTextfield.text!, imageData: imageData, onSuccess: {
+                    //switch view
+                    self.performSegue(withIdentifier: "SignUpToTabBarVC", sender: nil)
+                }, onError: { (errorString) in
+                    print(errorString!)
+                })
+            } else {
+                print("Profile Image cant be empty")
+        }
     }
-    
+}
     //clean code
 
 
 
 extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
     print("did Finish picking media")
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
         selectedImage = image
