@@ -44,10 +44,10 @@ class SignUpViewController: UIViewController {
         handleTextField()
     }
     func handleTextField() {
-            usernameTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
-            emailTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
-            passwordTextfield.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
-        }
+        usernameTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
+        emailTextField.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
+        passwordTextfield.addTarget(self, action: #selector(SignUpViewController.textFieldDidChange), for: UIControlEvents.editingChanged)
+    }
     
     
     
@@ -95,13 +95,13 @@ class SignUpViewController: UIViewController {
 
 extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-    print("did Finish picking media")
+        print("did Finish picking media")
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-        selectedImage = image
-        profileImage.image = image
-    }
-    print(info)
-    //    profileImage.image = infoPhoto
-    dismiss(animated: true, completion: nil)
+            selectedImage = image
+            profileImage.image = image
+        }
+        print(info)
+        //    profileImage.image = infoPhoto
+        dismiss(animated: true, completion: nil)
     }
 }
