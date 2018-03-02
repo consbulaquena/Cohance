@@ -7,5 +7,9 @@
 //
 
 import Foundation
-
+struct Config {
+    //to store url
+    static var STORAGE_ROOF_REF = "gs://cohance-ca490.appspot.com"
+    
+}
 
