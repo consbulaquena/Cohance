@@ -3,6 +3,10 @@ Enhance your friendship. Share moments.
 
 [![Swift](https://img.shields.io/badge/Swift-4.0-orange.svg)]() [![Platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)]()
 
+### Features
+Camera
+
+
 ### Library used
 <a href = "https://github.com/relatedcode/ProgressHUD">ProgressHUD</a>
 
