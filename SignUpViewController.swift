@@ -77,15 +77,16 @@ class SignUpViewController: UIViewController {
 
             if let profileImg = self.selectedImage, let imageData = UIImageJPEGRepresentation(profileImg, 0.1) {
 
-             
+                ProgressHUD.show("Please wait...", interaction: false)
                 AuthService.signUp(username: usernameTextField.text!, email: emailTextField.text!, password: passwordTextfield.text!, imageData: imageData, onSuccess: {
+                    ProgressHUD.showSuccess("Success!")
                     //switch view
                     self.performSegue(withIdentifier: "SignUpToTabBarVC", sender: nil)
                 }, onError: { (errorString) in
-                    print(errorString!)
+                ProgressHUD.showError(errorString!)
                 })
             } else {
-                print("Profile Image cant be empty")
+                ProgressHUD.showError("Please upload your photo.")
         }
     }
 }

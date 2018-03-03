@@ -18,14 +18,19 @@ class SignInViewController: UIViewController {
     
     
     @IBAction func signInButton_TouchUpInside(_ sender: Any) {
+        self.view.endEditing(true)
+        ProgressHUD.show("Please wait", interaction: false)
         //called the shared signin instance
-        AuthService.signIn(email: emailTextField.text!, password: passwordTextfield.text!, onSuccess: { self.performSegue(withIdentifier: "SignInToTabBarVC", sender: nil)
+        AuthService.signIn(email: emailTextField.text!, password: passwordTextfield.text!, onSuccess: {
+            ProgressHUD.showSuccess("Success!")
+            self.performSegue(withIdentifier: "SignInToTabBarVC", sender: nil)
 
         //ask VC to perform a segue to switch tab bar contorller -perform seg.
         
         // error message upon wrong email signIn entries
     }, onError: { error in
-        print(error!)
+        ProgressHUD.showError(error!)
+
     })
     
 }
@@ -79,6 +84,7 @@ class SignInViewController: UIViewController {
 //keyboard hides when touches begun
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+        
     }
 
     /*
