@@ -6,6 +6,8 @@ Enhance your friendship. Share moments.
 
 ### Features
 Camera
+Save photo to Database
+Username Password Authentication
 
 
 ### Library used
