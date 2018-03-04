@@ -5,14 +5,16 @@
 Enhance your friendship. Share moments.
 
 ### Features
-Camera
-
-Save photo to Database
-
-Username Password Authentication
-
+<ul><li>Camera</li>
+<li>Newsfeed - Share posts with friends</li>
+<li>Comment on Photos</li>
+<li>Save photo and user information to Firebase Database</li>
+<li>Username Password Authentication</li>
+<li>Status notifications using ProgressHUD</li>
+</ul>
 
 ### Library used
-<a href = "https://github.com/relatedcode/ProgressHUD">ProgressHUD</a>
-
-<a href = "https://firebase.google.com">Firebase</a>
+<ul>
+<li><a href = "https://github.com/relatedcode/ProgressHUD">ProgressHUD</a></li>
+<li><a href = "https://firebase.google.com">Firebase</a></li>
+</ul>
