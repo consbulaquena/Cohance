@@ -57,17 +57,19 @@ class CameraViewController: UIViewController {
         let ref = FIRDatabase.database().reference()
         let postsReference = ref.child("posts")
         let newPostId = postsReference.childByAutoId().key
-        //print(usersReference.description())
+        //send pic and caption to database upon share button
         let newPostsReference = postsReference.child(newPostId)
-        newPostsReference.setValue(["photoUrl": photoUrl], withCompletionBlock: {
+        newPostsReference.setValue(["photoUrl": photoUrl, "caption": captionTextView.text!], withCompletionBlock: {
             (error, ref) in
             if error != nil {
                 ProgressHUD.showError(error!.localizedDescription)
                 return
             }
             ProgressHUD.showSuccess("Success")
+            //clear caption view and photo
+            self.captionTextView.text = ""
+            self.photo.image = UIImage(named: "addimage_160")
             })
-
 }
 }
 
