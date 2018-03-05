@@ -69,6 +69,8 @@ class CameraViewController: UIViewController {
             //clear caption view and photo
             self.captionTextView.text = ""
             self.photo.image = UIImage(named: "addimage_160")
+            //switch back to homeview after sharing post selectedindex of tab bar 0 = home
+            self.tabBarController?.selectedIndex = 0
             })
 }
 }
