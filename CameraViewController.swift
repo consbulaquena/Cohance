@@ -27,6 +27,28 @@ class CameraViewController: UIViewController {
         photo.isUserInteractionEnabled = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        handlePost()
+    }
+    
+    func handlePost() {
+     //value only if not nil, or photo is uploaded, otherwise sharebtn always false.
+        if selectedImage != nil{
+            self.shareBtn.isEnabled = true
+            self.shareBtn.backgroundColor = UIColor( red: CGFloat(92/255.0), green: CGFloat(203/255.0), blue: CGFloat(207/255.0), alpha: CGFloat(1.0) )
+        } else {
+            self.shareBtn.isEnabled = false
+               self.shareBtn.backgroundColor = .lightGray
+        }
+        }
+        
+    
+    //hide keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     @objc func handleSelectPhoto() {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
@@ -52,6 +74,11 @@ class CameraViewController: UIViewController {
     ProgressHUD.showError("Please upload your photo.")
         }
     }
+ 
+    @IBAction func remove_TouchUpInside(_ sender: Any) {
+        clean()
+    }
+    
     
     func sendDatatoDatabase(photoUrl: String) {
         let ref = FIRDatabase.database().reference()
@@ -66,12 +93,20 @@ class CameraViewController: UIViewController {
                 return
             }
             ProgressHUD.showSuccess("Success")
-            //clear caption view and photo
-            self.captionTextView.text = ""
-            self.photo.image = UIImage(named: "addimage_160")
+            self.clean()
+            
             //switch back to homeview after sharing post selectedindex of tab bar 0 = home
             self.tabBarController?.selectedIndex = 0
             })
+}
+
+func clean() {
+    //clear caption view and photo
+    self.captionTextView.text = ""
+    self.photo.image = UIImage(named: "addimage_160")
+    //deactivate share button after posts being shared, photo nil equates to button nil
+    self.selectedImage = nil
+    
 }
 }
 
