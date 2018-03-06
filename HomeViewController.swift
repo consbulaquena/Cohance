@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class HomeViewController: UIViewController {
 
@@ -16,6 +17,14 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        loadPosts()
+    }
+    
+    //child added can see Grab existing data in database
+        func loadPosts() {
+            FIRDatabase.database().reference().child("posts").observe(.childAdded) { (snapshot: FIRDataSnapshot) in
+                print(snapshot.value)
+            }
         
     }
     
