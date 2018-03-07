@@ -20,12 +20,6 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         loadPosts()
     
-        
-//        var post = Post(captionText: "test", photoUrlString: "urlstring")
-//        print(post.caption)
-//        print(post.photoUrl)
-        
-        
     }
     
     //child added can see Grab existing data in database
@@ -33,10 +27,9 @@ class HomeViewController: UIViewController {
             FIRDatabase.database().reference().child("posts").observe(.childAdded) { (snapshot: FIRDataSnapshot) in
                 print(Thread.isMainThread)
             if let dict = snapshot.value as? [String: Any] {
-                let captionText = dict["caption"] as! String
-                let photoUrlString = dict["photoUrl"] as! String
-                let post = Post(captionText: captionText, photoUrlString: photoUrlString)
-                self.posts.append(post)
+                let newPost = Post.transformPost(dict: dict)
+                
+                self.posts.append(newPost)
                 print(self.posts) //print array
                 self.tableView.reloadData()
             }
