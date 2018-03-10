@@ -6,6 +6,7 @@ Enhance your friendship. Share moments.
 
 ### Features
 <ul><li>iOS Camera and Access to Photo Library</li>
+<li>Search</li>
 <li>Newsfeed - Share posts with friends</li>
 <li>Comment on Photos</li>
 <li>Save photo and user information to Firebase Database</li>
