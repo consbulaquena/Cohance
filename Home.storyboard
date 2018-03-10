@@ -54,13 +54,26 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="comment-50" translatesAutoresizingMaskIntoConstraints="NO" id="eYJ-lr-N0N">
-                                                    <rect key="frame" x="45" y="387" width="22" height="22"/>
+                                                    <rect key="frame" x="51" y="387" width="22" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="heart-gray2" translatesAutoresizingMaskIntoConstraints="NO" id="Iwc-fj-hmW">
-                                                    <rect key="frame" x="75" y="387" width="22" height="22"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="share1" translatesAutoresizingMaskIntoConstraints="NO" id="Iwc-fj-hmW">
+                                                    <rect key="frame" x="87" y="387" width="22" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IVs-G4-rim">
+                                                    <rect key="frame" x="7" y="417" width="360" height="1"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                </view>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FLr-Yx-xow">
+                                                    <rect key="frame" x="10" y="417" width="175" height="39"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                                    <state key="normal" title="Be the first to like this!">
+                                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -116,6 +129,7 @@
         <image name="heart-gray2" width="50" height="50"/>
         <image name="heart-pink" width="44" height="44"/>
         <image name="home" width="23" height="23"/>
+        <image name="share1" width="50" height="50"/>
         <image name="user-empty2" width="160" height="160"/>
     </resources>
 </document>
