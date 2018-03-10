@@ -9,7 +9,8 @@ Enhance your friendship. Share moments.
 <li>Newsfeed - Share posts with friends</li>
 <li>Comment on Photos</li>
 <li>Save photo and user information to Firebase Database</li>
-<li>Username Password Authentication</li>
+<li>Username Password & Authentication</li>
+<li>User Profiles</li>
 <li>Status notifications using ProgressHUD</li>
 </ul>
 
